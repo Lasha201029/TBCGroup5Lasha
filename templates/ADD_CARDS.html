@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block container %}
+<form method="post" class="col p-5" enctype="multipart/form-data">
+
+    {{ form.hidden_tag() }}
+    <div class="row mt-2">
+        {{ form.name( class = "form-control", placeholder = form.name.label.text) }}
+    </div>
+    <div class="row mt-2 ">
+        {{ form.part( class = "form-control", placeholder = form.part.label.text) }}
+    </div>
+    <div class="row mt-2 ">
+        {{ form.img( class = "form-control") }}
+    </div>
+    <div class="row mt-2 btn btn-info">
+        {{ form.submit( class = "btn btn-info", accept = ".png, .jpeg. jpg") }}
+    </div>
+</form>
+{% endblock %}

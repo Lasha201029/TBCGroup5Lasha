@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div class="container bg-white mt-5 p-3 rounded shadow" style="...">
+
+    <p style="text-align: center;">Information</p>
+    <hr>
+    <table class="table">
+        <tr>
+            <th>name:</th>
+            <td>{{card["name"]}}</td>
+        </tr>
+        <tr>
+            <th>part :</th>
+            <td>{{card["part"]}}</td>
+        </tr>
+        <tr>
+            <th>image</th>
+            <td>{{card["img"]}}</td>
+        </tr>
+    </table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block container %}
+<form class="row" method = "post" >
+    {{ form.hidden_tag() }}
+    <div class="col p-5">
+        <div class="row mt-2 border - solid blue">
+
+            {{ form.name( class = "form-control", placeholder = form.name.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.password( class = "form-control", placeholder = form.password.label.text) }}
+            <div class="row mt-2">
+                <a href = "/">
+                    {{ form.submits( class = "btn btn-primary" ) }}
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

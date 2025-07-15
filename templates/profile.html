@@ -1,0 +1,52 @@
+{% extends "/base.html" %}
+
+
+
+{% block container %}
+<div class="container bg-white mt-5 p-3 rounded shadow" style="...">
+
+
+    <p style="text-align: center;">Your profile</p>
+    <hr>
+    <table class="table">
+        <tr>
+            <th>name:</th>
+            <td>{{current_user["name"]}}</td>
+        </tr>
+        <tr>
+            <th>birthday date :</th>
+            <td>{{current_user["birthday"]}}</td>
+        </tr>
+        <tr>
+            <th>gender</th>
+            <td>{{current_user["gender"]}}</td>
+        </tr>
+        <tr>
+            <th>country:</th>
+            <td>{{current_user["country"]}}</td>
+        </tr>
+        <tr>
+            <th>role:</th>
+            <td>{{current_user["role"]}}</td>
+        </tr>
+    </table>
+    <div class="btn-group">
+
+        <a href="/profile/{{current_user['id'] }}" class="btn btn-danger" >edit</a>
+
+        <a href="/delete_profile/{{current_user['id'] }}" class="btn btn-outline-danger">delete</a>
+    </div>
+</div>
+{% if current_user.role=="admin" %}
+<div class="container bg-white mt-5 p-3 rounded shadow" style="...">
+    <p style="text-align: center;">edit others profile</p>
+    <hr>
+     <div>
+        <form action="/edit" method="GET">
+            <input type="text" name="name" placeholder="enter name">
+            <button type="submit" class="btn btn-danger">Edit</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

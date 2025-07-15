@@ -1,0 +1,33 @@
+{% extends "/base.html" %}
+
+
+
+{% block container %}
+
+
+
+<div class="d-flex w-50 mt-5 flex-column mx-auto">
+    <form method="post" >
+
+        {{ form.hidden_tag() }}
+
+        {{ form.name(class="form-control mb-2" , placeholder=form.name.label.text ) }}
+        {{ form.password(class="form-control mb-2" , placeholder=form.password.label.text ) }}
+
+        {{ form.birthday.label }}
+        {{ form.birthday(class="form-control mb-2" , ) }}
+
+        {{ form.gender.label }}
+        {{ form.gender(class="form-control" ) }}
+
+        {{ form.country(class="form-control mb-2"  , placeholder=form.country.label.text ) }}
+
+        {% if current_user.role=="admin" %}
+        {{ form.role(class="form-control  " , placeholder=form.role.label.text ) }}
+        {% endif %}
+
+        {{ form.submits(class=" mt-5 btn btn-danger" ) }}
+
+    </form>
+</div>
+{% endblock %}

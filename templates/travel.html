@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+
+<br><br>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+            <img src="https://mbg.ge/uploads/locblogs/large/85766c71b1b1d869fb61457faa46a547.jpg" class="d-block w-100"
+                 alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img src="https://www.raftinginkutaisi.com/wp-content/uploads/2022/04/48755839051_8d7377772c_b-e1649759385538.jpg"
+                 class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img src="https://cdn.georgiantravelguide.com/storage/thumbnails/imereti-kutaisi-1.jpg"
+                 class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    <br><br>
+</div>
+
+<div class="row">
+    {% for cards in card %}
+    <div class="col-4">
+        <div class="card" style="width: 26rem;">
+            <img src="/static/photo/{{ cards['img'] }}"
+                 class="card-img-top" style="width:100%; height:250px; object-fit:cover;"
+                 alt="...">
+            <div class="btn-group">
+                {% if current_user.role == "admin" or current_user.role=="moderator" %}
+                <a href="/edit_card/{{cards['id']}}" class="btn btn-info"> edit</a>
+                <a href="/delete_card/{{cards['id']}}" class="btn btn-danger">delete</a>
+                <a href="/ADD_CARDS" class="btn btn-info">add_place</a>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <a href="{{ url_for('same', btn_name=cards['name']) }}">
+                    <h5 class="btn btn-success" style="width:100%; height: 100%;">{{ cards['name'] }}</h5>
+                </a>
+            </div>
+        </div>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
